@@ -40,8 +40,8 @@ const textures = {
     dirt: loadTex('Dirt.png'),
     grass: loadTex('grass.png'), 
     stone: loadTex('stone.png'),
-    wood: loadTex('tree.jpg'),
-    leaves: loadTex('foliage.jpg')
+    wood: loadTex('tree.png'),
+    leaves: loadTex('foliage.png')
 };
 
 const materials = [
@@ -58,8 +58,8 @@ const itemIcons = {
     1: './Assets/grass.png',
     2: './Assets/Dirt.png',
     3: './Assets/stone.png',
-    4: './Assets/tree.jpg',
-    5: './Assets/foliage.jpg'
+    4: './Assets/tree.png',
+    5: './Assets/foliage.png'
 };
 
 const blockBreakSound = new Audio('./Assets/sound of a block breaking.mp3');
