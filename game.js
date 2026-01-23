@@ -271,13 +271,13 @@ class Chunk {
                 const h = Math.floor((noise + 1) * 8 + 4);
 
                 for (let y = MIN_Y; y <= h; y++) {
-                    let type = 2; // dirt по умолчанию
+                    let type = 3; // СНАЧАЛА ВЕЗДЕ КАМЕНЬ
 
-                    if (y === h) type = 1;           // grass
-                    else if (y >= h - 2) type = 2;   // 2 слоя dirt
-                    else type = 3;                   // stone
-                    
-                    if (y === -7) type = 8;         // gold
+                    if (y >= h - 2) type = 2; // dirt
+                    if (y === h)    type = 1; // grass
+
+                        // фиксированный слой золота
+                    if (y === -7) type = 8;
 
                      // руды только в камне
                     if (type === 3) {
@@ -285,7 +285,7 @@ class Chunk {
                        if (y < -9 && Math.random() < 0.2) type = 8; // gold
                     }
 
-                this.setBlockLocal(x, y, z, type);
+                    this.setBlockLocal(x, y, z, type);
                 }
 
                 if (x > 2 && x < 13 && z > 2 && z < 13 && Math.random() < 0.01 && h > 4) {
