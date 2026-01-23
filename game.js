@@ -277,7 +277,7 @@ class Chunk {
                     if (y < h - 2) type = 4;        // stone (2 слоя dirt)
 
                      // руды только в камне
-                    if (type === 3) {
+                    if (type === 4) {
                        if (y < -2 && Math.random() < 0.5) type = 7; // iron
                        if (y < -6 && Math.random() < 0.2) type = 8; // gold
                     }
