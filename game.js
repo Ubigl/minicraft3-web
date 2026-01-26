@@ -277,9 +277,10 @@ class Chunk {
                 const h = Math.floor((noise + 1) * 8 + 4);
 
                 for (let y = MIN_Y; y <= h; y++) {
-                    let type = 3; // СНАЧАЛА ВЕЗДЕ КАМЕНЬ
+                    let type = 9; // СНАЧАЛА ВЕЗДЕ КАМЕНЬ
 
                     if (y >= h - 2) type = 2; // dirt
+                    if (y >= h - 4) type = 8; // 
                     if (y === h)    type = 1; // grass
 
                         // фиксированный слой золота
