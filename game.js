@@ -45,6 +45,7 @@ const textures = {
     ruby: loadTex('ruby.png'),
     emerald: loadTex('emerald.png'),
     gold: loadTex('Gold.png'),
+    diamond: loadTex('diamond.png'),
     leaves: loadTex('foliage.png')
 };
 
@@ -59,7 +60,8 @@ const materials = [
     new THREE.MeshLambertMaterial({ map: textures.iron }), // 7
     new THREE.MeshLambertMaterial({ map: textures.ruby }), // 8
     new THREE.MeshLambertMaterial({ map: textures.emerald }), // 9
-    new THREE.MeshLambertMaterial({ map: textures.gold })  // 10
+    new THREE.MeshLambertMaterial({ map: textures.diamond }), // 10
+    new THREE.MeshLambertMaterial({ map: textures.gold })  // 11
 ];
 
 const itemIcons = {
@@ -71,7 +73,8 @@ const itemIcons = {
     7: './Assets/Iron.png',
     8: './Assets/ruby.png',
     9: './Assets/emerald.png',
-    10: './Assets/Gold.png'
+    10: './Assets/diamond.png',
+    11: './Assets/Gold.png'
 };
 
 const blockBreakSound = new Audio('./Assets/sound of a block breaking.mp3');
@@ -265,7 +268,7 @@ class Chunk {
     }
 
     generate() {
-        const MIN_Y = -11;
+        const MIN_Y = -20;
 
         for (let x = 0; x < CHUNK_SIZE; x++) {
             for (let z = 0; z < CHUNK_SIZE; z++) {
@@ -283,11 +286,15 @@ class Chunk {
                     if (y === h)    type = 1; // grass
 
                         // фиксированный слой золота
-                    if (y === -5) type = 10;
+                    if (y === -5) type = 7; // iron
 
                      // руды только в камне
                     if (type === 3) {
-                       if (y < -7 && Math.random() < 0.5) type = 7; // iron
+                       if (y < -7 && Math.random() < 0.3) type = 8; // ruby
+                       if (y < -9 && Math.random() < 0.5) type = 11; // gold
+                       if (y < -10 && Math.random() < 0.2) type = 10;
+                       if (y < -15 && Math.random() < 0.5) type = 9;
+                        
                     }
 
                     this.setBlockLocal(x, y, z, type);
